@@ -75,7 +75,7 @@ class PropertyModelTestCase(TestCase):
 
     def test_delete_property_with_invalid_id(self):
         """Test deleting a property with an invalid ID (non-existent)"""
-        response = self.client.delete('/properties/999/')  # ID 999 does not exist
+        response = self.client.delete('/api/properties/999/')  # ID 999 does not exist
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_unauthenticated_user_cannot_create_property(self):

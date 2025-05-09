@@ -36,7 +36,7 @@ pip install -r requirements.txt
 ```
 
 ### 4. Restore the PostgreSQL Database
-
+> ⚠️ **Note:** To use SQLITE Database for testing see below
 First, ensure PostgreSQL is running and then create the user and database:
 ```bash
 sudo -u postgres psql
@@ -45,7 +45,7 @@ sudo -u postgres psql
 Inside the PostgreSQL shell:
 ```bash
 CREATE DATABASE zero_deposit_db;
-CREATE USER zero_deposit_user WITH PASSWORD 'securepassword123';
+CREATE USER zero_deposit_user WITH PASSWORD '<see .env file>';
 GRANT ALL PRIVILEGES ON DATABASE zero_deposit_db TO zero_deposit_user;
 \q
 ```
@@ -55,9 +55,9 @@ Then restore the backup:
 pg_restore -U zero_deposit_user -d zero_deposit_db zero_deposit_db_backup.dump
 ```
 ### OR run SQLITE Database
+> ⚠️ **Note:** Only do this if you want to use PostgreSQL.
 ```bash
 export USE_SQLITE=true
-python manage.py migrate
 ```
 
 ### 5. Run Migrations
